@@ -1,0 +1,23 @@
+//Since Outer function returns inner fucntion, the inner function can access outer function
+//variable and keep it alive.
+// Closures allow us to remember values
+// Real time thinking: Imagine we can return a useful function with predetermined inbuilt functionalities and on top of it , the returned functions can get paramters and play arounf logic
+
+
+function handleLikePost(existingLikeCount = 0) {
+  let likeCount = existingLikeCount;
+  return function addLike(step) {
+      likeCount = likeCount + step
+      return likeCount
+  }
+}
+const func = handleLikePost(250);
+
+console.log(func(2));
+console.log(func(3));
+console.log(func(4));
+
+const newfunc = handleLikePost(); // Fresh instance of the inner function and in this case default value is used
+console.log(newfunc(2));
+console.log(newfunc(3));
+console.log(newfunc(4));
